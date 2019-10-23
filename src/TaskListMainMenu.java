@@ -25,7 +25,8 @@ public class TaskListMainMenu{
 	    	System.out.println();
 	    	System.out.println("<<<<< Add Task >>>>>");
 	    	System.out.println("Enter the description: ");
-	    	description = scanner.next();
+	    	scanner.nextLine();
+	    	description = scanner.nextLine();
 	    	controller.addTask(description);
 	    }
 	    
