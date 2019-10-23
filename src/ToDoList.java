@@ -51,8 +51,8 @@ private HashMap<String, Task> tasks = new HashMap<String, Task>();
 		task.setDescription(description);
 	}
 	
-	public Collection<String> searchPartial(String description) {
-		Collection<String> result = new ArrayList<String>();
+	public Collection<Task> searchPartial(String description) {
+		Collection<Task> result = new ArrayList<Task>();
 		Collection<Task> allTasks = getAllTasks();
 		if (description.length() == 0) {
 			return result;
@@ -60,7 +60,7 @@ private HashMap<String, Task> tasks = new HashMap<String, Task>();
 		for (Task t : allTasks) {
 			String currentDescription = t.getDescription();
 			if (currentDescription.toLowerCase().contains(description.toLowerCase())) {
-				result.add(t.getDescription());
+				result.add(t);
 			}
 		}
 		return result;

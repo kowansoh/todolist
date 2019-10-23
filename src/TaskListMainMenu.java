@@ -66,11 +66,11 @@ public class TaskListMainMenu{
 	    if(option == 5) {
 	    	System.out.println();
 	    	System.out.println("<<<<< Search Task >>>>>");
-	    	System.out.println("This is your task list:");
-	    	print(controller.getAllTask());
-	    	
 	    	System.out.println("Enter description to search: ");
-	    	searchQuery = scanner.next();
+	    	scanner.nextLine();
+	    	searchQuery = scanner.nextLine();
+	    	Collection<Task> tasks = controller.search(searchQuery);
+	    	print(tasks);
 	    }
 	    
 	    if(option == 6) {
@@ -94,11 +94,16 @@ public class TaskListMainMenu{
   }
   
   public static void print(Collection<Task> tasks) {
-	int i = 1;  
-	for(Task task:tasks) {
-		System.out.print(i +". ");
-		print(task);
-		i++;
+	int i = 1;
+	if(tasks.isEmpty())
+	{
+		System.out.println("No Tasks.");
+	} else {
+		for(Task task:tasks) {
+			System.out.print(i +". ");
+			print(task);
+			i++;
+		}
 	}
 	System.out.println("");
   }

@@ -41,4 +41,9 @@ public class Controller {
 		Task task = tasks.get(index-1);
 		return task;
 	}
+	
+	public Collection<Task> search(String description){
+		Collection<Task> tasks = toDoList.searchPartial(description);
+		return tasks;
+	}
 }
