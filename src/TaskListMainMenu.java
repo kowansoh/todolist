@@ -22,6 +22,7 @@ public class TaskListMainMenu{
 	    option = scanner.nextInt();
 	    
 	    if(option == 1) {
+	    	System.out.println();
 	    	System.out.println("<<<<< Add Task >>>>>");
 	    	System.out.println("Enter the description: ");
 	    	description = scanner.next();
@@ -29,6 +30,8 @@ public class TaskListMainMenu{
 	    }
 	    
 	    if(option == 2) {
+	    	System.out.println();
+	    	System.out.println("<<<<< Edit Task >>>>>");
 	    	System.out.println("This is your task list:");
 	    	print(controller.getAllTask());
 	    	
@@ -40,6 +43,8 @@ public class TaskListMainMenu{
 	    }
 	    
 	    if(option == 3) {
+	    	System.out.println();
+	    	System.out.println("<<<<< Delete Task >>>>>");
 	    	System.out.println("This is your task list:");
 	    	print(controller.getAllTask());
 	    	
@@ -51,11 +56,15 @@ public class TaskListMainMenu{
 	    }
 	    
 	    if(option == 4) {
+	    	System.out.println();
+	    	System.out.println("<<<<< View Task >>>>>");
 	    	System.out.println("This is your task list:");
 	    	print(controller.getAllTask());
 	    }
 	    
 	    if(option == 5) {
+	    	System.out.println();
+	    	System.out.println("<<<<< Search Task >>>>>");
 	    	System.out.println("This is your task list:");
 	    	print(controller.getAllTask());
 	    	
