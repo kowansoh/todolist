@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 
 public class Controller {
 	private ToDoList toDoList;
@@ -27,13 +28,17 @@ public class Controller {
 	
 	public void deleteTask(int index,String decision) {
 		Task task = getTaskUsingIndex(index);
-		if(decision == "Y")
+		if(decision.equalsIgnoreCase("Y"))
 			toDoList.removeTask(task.getDescription());
 	}
 	
 	private Task getTaskUsingIndex(int index) {
-		ArrayList<Task> tasks = (ArrayList<Task>)toDoList.getAllTasks();
-		Task task = tasks.get(index);
+		Iterator<Task> iteratorTask = toDoList.getAllTasks().iterator();
+		ArrayList<Task> tasks = new ArrayList<Task>();
+		while(iteratorTask.hasNext()) {
+			tasks.add(iteratorTask.next());
+		}
+		Task task = tasks.get(index-1);
 		return task;
 	}
 }
