@@ -46,15 +46,6 @@ private HashMap<String, Task> tasks = new HashMap<String, Task>();
 	public void print(Task task) {
 		System.out.print("Description"+task.getDescription() +" \n");
 	}
-	
-	public void displayMenu() {
-		System.out.println("---------------------------------");
-		System.out.println("1. Add Task");
-		System.out.println("2. Edit Task");
-		System.out.println("3. Delete Task");
-		System.out.println("4. View Task");
-		System.out.println("---------------------------------");
-  }
 
 	public void editTaskDescription(Task task, String description) {
 		task.setDescription(description);
