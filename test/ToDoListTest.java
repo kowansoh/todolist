@@ -15,8 +15,8 @@ public class ToDoListTest extends TestCase{
 	@Before
 	 public void setUp() throws Exception{
 		//Initialise Test Fixtures
-		uncompletedTask1 = new Task("CTask1",false);
-		completedTask1 = new Task("UTask1",true);
+		uncompletedTask1 = new Task("UTask1",false);
+		completedTask1 = new Task("CTask1",true);
 	}
 	@After
 	 public void tearDown() throws Exception{
@@ -75,5 +75,17 @@ public class ToDoListTest extends TestCase{
 		todoList.addTask(completedTask1);
 		
 		assertEquals(todoList.getCompletedTasks().size(),1);
+	}
+	@Test
+	public void testEditTasksDesciption() {
+		ToDoList todoList = new ToDoList();
+		
+		todoList.addTask(uncompletedTask1);
+
+		assertEquals("UTask1", uncompletedTask1.getDescription());
+		
+		todoList.editTaskDescription(uncompletedTask1, "UTask2");
+		
+		assertEquals("UTask2", uncompletedTask1.getDescription());
 	}
 }
