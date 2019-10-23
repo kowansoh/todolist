@@ -42,9 +42,9 @@ public class ControllerTest extends TestCase {
 		assertTrue(controller.getAllTask().size() == 1);
 		controller.deleteTask(20, "Y");
 		assertTrue(controller.getAllTask().size() == 1);
-		controller.deleteTask(0,  "N");
+		controller.deleteTask(1,  "N");
 		assertTrue(controller.getAllTask().size() == 1);
-		controller.deleteTask(0, "Y");
+		controller.deleteTask(1, "Y");
 		assertTrue(controller.getAllTask().size() == 0);
 	}
 }
