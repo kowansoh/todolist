@@ -59,4 +59,19 @@ private HashMap<String, Task> tasks = new HashMap<String, Task>();
 	public void editTaskDescription(Task task, String description) {
 		task.setDescription(description);
 	}
+	
+	public Collection<String> searchPartial(String description) {
+		Collection<String> result = new ArrayList<String>();
+		Collection<Task> allTasks = getAllTasks();
+		if (description.length() == 0) {
+			return result;
+		}
+		for (Task t : allTasks) {
+			String currentDescription = t.getDescription();
+			if (currentDescription.toLowerCase().contains(description.toLowerCase())) {
+				result.add(t.getDescription());
+			}
+		}
+		return result;
+	}
 }

@@ -88,4 +88,16 @@ public class ToDoListTest extends TestCase{
 		
 		assertEquals("UTask2", uncompletedTask1.getDescription());
 	}
+	
+	@Test
+	public void testSearchPartial() {
+		ToDoList todoList = new ToDoList();
+		assertTrue(todoList.searchPartial("UT").isEmpty());
+		todoList.addTask(uncompletedTask1);
+		assertFalse(todoList.searchPartial("UT").isEmpty());
+		assertFalse(todoList.searchPartial("ut").isEmpty());
+		assertTrue(todoList.searchPartial("").isEmpty());
+		todoList.addTask(completedTask1);
+		assertEquals(1, todoList.searchPartial("ut").size());
+	}
 }
