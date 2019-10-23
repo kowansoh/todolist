@@ -37,4 +37,7 @@ private HashMap<String, Task> tasks = new HashMap<String, Task>();
 		}
 		return completedTasks;
 	}
+	public void editTaskDescription(Task task, String description) {
+		task.setDescription(description);
+	}
 }
