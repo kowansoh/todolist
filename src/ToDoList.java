@@ -37,4 +37,22 @@ private HashMap<String, Task> tasks = new HashMap<String, Task>();
 		}
 		return completedTasks;
 	}
+	public void print(Collection<Task> tasks) {
+		for(Task task:tasks) {
+			print(task);
+		}
+	}
+	
+	public void print(Task task) {
+		System.out.print("Description"+task.getDescription() +" \n");
+	}
+	
+	public void displayMenu() {
+		System.out.println("---------------------------------");
+		System.out.println("1. Add Task");
+		System.out.println("2. Edit Task");
+		System.out.println("3. Delete Task");
+		System.out.println("4. View Task");
+		System.out.println("---------------------------------");
+	}
 }
