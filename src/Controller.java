@@ -4,6 +4,10 @@ import java.util.Collection;
 public class Controller {
 	private ToDoList toDoList;
 	
+	public Controller () {
+		toDoList = new ToDoList();
+	}
+	
 	public void addTask(String desc) {
 		Task task = new Task(desc);
 		toDoList.addTask(task);
@@ -21,9 +25,9 @@ public class Controller {
 		toDoList.editTaskDescription(task, description);
 	}
 	
-	public void deleteTask(int index,char decision) {
+	public void deleteTask(int index,String decision) {
 		Task task = getTaskUsingIndex(index);
-		if(decision == 'Y')
+		if(decision == "Y")
 			toDoList.removeTask(task.getDescription());
 	}
 	
