@@ -5,11 +5,12 @@
               directory with the processing instruction <?eclipse.ant.import?>
               as the first entry and export the buildfile again. --><project basedir="." default="build" name="todolist">
     <property environment="env"/>
+    <property name="junit.output.dir" value="junit"/>
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.8"/>
     <property name="source" value="1.8"/>
     <path id="JUnit 5.libraryclasspath">
-        <pathelement location="./jar/org.junit.jupiter.api_5.5.1.v20190826-0900.jar"/>
+    	<pathelement location="./jar/org.junit.jupiter.api_5.5.1.v20190826-0900.jar"/>
         <pathelement location="./jar/org.junit.jupiter.engine_5.5.1.v20190826-0900.jar"/>
         <pathelement location="./jar/org.junit.jupiter.migrationsupport_5.5.1.v20190826-0900.jar"/>
         <pathelement location="./jar/org.junit.jupiter.params_5.5.1.v20190826-0900.jar"/>
@@ -26,6 +27,18 @@
     </path>
     <path id="todolist.classpath">
         <pathelement location="bin"/>
+        <path refid="JUnit 5.libraryclasspath"/>
+    </path>
+    <path id="run.ToDoListTest (1).classpath">
+        <path refid="todolist.classpath"/>
+        <path refid="JUnit 5.libraryclasspath"/>
+    </path>
+    <path id="run.TaskListMainMenu.classpath">
+        <path refid="todolist.classpath"/>
+        <path refid="JUnit 5.libraryclasspath"/>
+    </path>
+    <path id="run.todolist.classpath">
+        <path refid="todolist.classpath"/>
         <path refid="JUnit 5.libraryclasspath"/>
     </path>
     <target name="init">
@@ -68,5 +81,37 @@
     <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
         <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
         <antcall target="build"/>
+    </target>
+    <target name="ToDoListTest (1)">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="ToDoListTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.ToDoListTest (1).classpath"/>
+        </junit>
+    </target>
+    <target name="TaskListMainMenu">
+        <java classname="TaskListMainMenu" failonerror="true" fork="yes">
+            <classpath refid="run.TaskListMainMenu.classpath"/>
+        </java>
+    </target>
+    <target name="todolist">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="ControllerTest" todir="${junit.output.dir}"/>
+            <test name="ToDoListTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="run.todolist.classpath"/>
+        </junit>
+    </target>
+    <target name="junitreport">
+        <junitreport todir="${junit.output.dir}">
+            <fileset dir="${junit.output.dir}">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report format="frames" todir="${junit.output.dir}"/>
+        </junitreport>
     </target>
 </project>
