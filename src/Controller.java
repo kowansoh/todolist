@@ -28,8 +28,11 @@ public class Controller {
 	
 	public void deleteTask(int index,String decision) {
 		Task task = getTaskUsingIndex(index);
-		if(decision.equalsIgnoreCase("Y"))
-			toDoList.removeTask(task.getDescription());
+		if (task != null) {
+			if(decision.equalsIgnoreCase("Y")) {
+				toDoList.removeTask(task.getDescription());
+			}
+		}
 	}
 	
 	private Task getTaskUsingIndex(int index) {
@@ -38,8 +41,11 @@ public class Controller {
 		while(iteratorTask.hasNext()) {
 			tasks.add(iteratorTask.next());
 		}
-		Task task = tasks.get(index-1);
-		return task;
+		if (index-1 >= 0 && index-1 <= tasks.size()) {
+			Task task = tasks.get(index-1);
+			return task;
+		}
+		return null;
 	}
 	
 	public Collection<Task> search(String description){
